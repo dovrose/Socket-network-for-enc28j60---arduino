@@ -22,12 +22,6 @@ uint32_t timeStamp;
 #define INTERVAL                10000
 unsigned long lastTime = 0;
 
-#include "RF24.h"
-#include <RF24Network.h>
-
-RF24 radio( /* CE */ 2, /* CSN */ 3);
-RF24Network network(radio);
-
 void tcpSerialPrint(uint16_t port,byte ip[4], const char *data, word len) {
   Serial.print("port: ");Serial.print(port);
   
@@ -53,11 +47,8 @@ void setup(){
 	Serial.begin(57600);
 	Serial.println("Started");
 	
-	
-	
 	net.begin(mymac);
 	net.dhcpSetup ();
-	
 	
 	//Start socket
 	net.socketSetup(tcpSerialPrint,my_port,dest_ip,server_port);
