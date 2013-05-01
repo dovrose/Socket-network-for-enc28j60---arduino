@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Socket-network-for-enc28j60---arduino by dovrose</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Socket-network-for-enc28j60---arduino</h1>
+        <p>The TCP socket connection based on enc28j60 chip for arduino 1.0</p>
+
+        <p class="view"><a href="https://github.com/dovrose/Socket-network-for-enc28j60---arduino">View the Project on GitHub <small>dovrose/Socket-network-for-enc28j60---arduino</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/dovrose/Socket-network-for-enc28j60---arduino/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/dovrose/Socket-network-for-enc28j60---arduino/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/dovrose/Socket-network-for-enc28j60---arduino">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>Arduino TCP/IP SOCKET</h2>
+
+<p>I had to create a project with TCP/IP socket connection. All other projects I found was a connection to Web sites, but the link was dropped after the connection.
+I added the ability to keep the connection open, but I didn't tried to connect to WEB pages (I don't need it).</p>
+
+<h2>About the ENC28J60</h2>
+
+<p>ENC28J60 Ethernet Module utilizes the new Microchip ENC28J60 Stand-Alone Ethernet Controller IC featuring a host of features to handle most of the network protocol requirements. The board connects directly to most microcontrollers with a standard SPI interface with a transfer speed of up to 20MHz.</p>
+
+<h2>What we have?</h2>
+
+<p><strong>We can do the following:</strong></p>
+
+<ol>
+<li>Open socket connection to socket server from arduino.</li>
+<li>Send UDP packets</li>
+<li>Listen to UDP.</li>
+<li>Get NTP.</li>
+<li>Connect with DHCP.</li>
+<li>Connect to server with DNS name.</li>
+</ol><h2>How to use</h2>
+
+<h3>Set the ethernet you need to set MAC address:</h3>
+
+<p><code>static uint8_t mymac[6] = {0x54,0x55,0x58,0x10,0x00,0x24};</code></p>
+
+<h3>Set the socket:</h3>
+
+<p><code>static uint16_t my_port = 11200;     // client port</code></p>
+
+<p><code>static uint16_t server_port = 1000;   // server port</code></p>
+
+<p><code>static uint8_t dest_ip[4]={192,168,1,105};  //server IP</code></p>
+
+<h3>Start socket - in setup</h3>
+
+<p><code>net.socketSetup(tcpSerialPrint,my_port,dest_ip,server_port);</code></p>
+
+<blockquote>
+<p>the <em>tcpSerialPrint</em> is callback function on receiving data.</p>
+</blockquote>
+
+<p><code>while (!net.connect()) {}</code></p>
+
+<p><code>Serial.println("socket connected");</code></p>
+
+<h3>keep the socket alive - in the loop</h3>
+
+<p><code>net.process();</code></p>
+
+<p><code>net.available()</code></p>
+
+<h2>Next steps</h2>
+
+<ol>
+<li>Add the ability to connect web sits.</li>
+<li>keep alive connection.</li>
+<li>Re-transmission packets.</li>
+<li>Connect to network with static address.</li>
+</ol><h2>Authors and Contributors - Thank you</h2>
+
+<p>To create this, I had help from the following:</p>
+
+<ul>
+<li>
+<a href="https://github.com/jcw/ethercard">ethercard</a> - Jean-Claude Wippler</li>
+<li>
+<a href="http://trollmaker.com/article11/arduino-1-0-with-enc28j60-ethernet-shield-v1-1">Arduino 1.0 with enc28j60 Ethernet Shield V1.1</a> - Virtualmix</li>
+<li>  The help to understand <a href="http://www.codetorment.com/2009/10/24/arduino-goodness-ethernet-shield/#postcomment">Arduino Goodness : Ethernet Shield</a> - Tom Decreton</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/dovrose">dovrose</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
