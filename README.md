@@ -9,4 +9,5 @@ You have the following abilities:
  - Get NTP.
  - connect with DHCP.
  - connect to server with DNS name.
+
 I used ethercard and ethershiled libraries to create the socket project.
